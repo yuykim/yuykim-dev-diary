@@ -1,0 +1,38 @@
+---
+import type { DevlogEntry } from "../lib/site";
+import { excerptFromBody, formatDate, getDiaryUrl, getProjectUrl } from "../lib/site";
+import MoodBadge from "./MoodBadge.astro";
+import TagList from "./TagList.astro";
+
+interface Props {
+  entry: DevlogEntry;
+}
+
+const { entry } = Astro.props;
+const excerpt = excerptFromBody(entry.body, 160);
+---
+
+<article class="diary-card">
+  <div class="diary-card__meta">
+    <span>{formatDate(entry.data.date)}</span>
+    <MoodBadge mood={entry.data.mood} type={entry.data.type} />
+  </div>
+
+  <div class="diary-card__body">
+    {entry.data.thumbnail ? (
+      <img class="diary-card__thumb" src={entry.data.thumbnail} alt="" loading="lazy" />
+    ) : (
+      <div class="diary-card__thumb diary-card__thumb--empty" aria-hidden="true">
+        <span>LOG</span>
+      </div>
+    )}
+
+    <div>
+      <a class="project-link" href={getProjectUrl(entry.data.project_slug)}>{entry.data.project}</a>
+      <h3><a href={getDiaryUrl(entry)}>{entry.data.title}</a></h3>
+      {excerpt && <p>{excerpt}</p>}
+      <TagList tags={entry.data.tags} />
+      <a class="pixel-button" href={getDiaryUrl(entry)}>PRESS START TO READ</a>
+    </div>
+  </div>
+</article>

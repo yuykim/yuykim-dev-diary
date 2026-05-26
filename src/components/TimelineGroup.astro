@@ -1,0 +1,19 @@
+---
+import type { DevlogEntry } from "../lib/site";
+import { formatDate } from "../lib/site";
+import DiaryCard from "./DiaryCard.astro";
+
+interface Props {
+  date: string;
+  entries: DevlogEntry[];
+}
+
+const { date, entries } = Astro.props;
+---
+
+<section class="timeline-group">
+  <h2><span>{formatDate(date)}</span><small>SAVE POINT</small></h2>
+  <div class="timeline-group__entries">
+    {entries.map((entry) => <DiaryCard entry={entry} />)}
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DiaryCard from "../../components/DiaryCard.astro";
+import ImageGallery from "../../components/ImageGallery.astro";
+import PixelFrame from "../../components/PixelFrame.astro";
+import TagList from "../../components/TagList.astro";
+import { collectImages, isPublicDevlog, sortByDateDesc } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  const entries = sortByDateDesc((await getCollection("devlog")).filter(isPublicDevlog));
+
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: {
+      project,
+      entries: entries.filter((entry) => entry.data.project_slug === project.data.slug),
+    },
+  }));
+}
+
+const { project, entries } = Astro.props;
+const images = collectImages(entries);
+---
+
+<BaseLayout title={project.data.name}>
+  <section class="project-stage">
+    <p class="eyebrow">PROJECT STAGE</p>
+    <h1>{project.data.name}</h1>
+    {project.data.description && <p>{project.data.description}</p>}
+    <TagList tags={project.data.tags} />
+    {project.data.repo_url && <a class="pixel-button" href={project.data.repo_url}>OPEN REPO</a>}
+  </section>
+
+  <PixelFrame>
+    <h2>Recent Logs</h2>
+    <div class="card-stack">
+      {entries.length > 0 ? entries.map((entry) => <DiaryCard entry={entry} />) : <p class="empty-state">No logs yet.</p>}
+    </div>
+  </PixelFrame>
+
+  <ImageGallery images={images} />
+</BaseLayout>

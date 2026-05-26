@@ -1,0 +1,8 @@
+{
+  "name": "gfootball-RLfootball-Imitation_Learning",
+  "slug": "gfootball-rlfootball-imitation-learning",
+  "description": "Google Research Football 환경에서 reinforcement learning과 imitation learning을 실험한 프로젝트.",
+  "category": "AI",
+  "tags": ["reinforcement-learning", "imitation-learning", "gfootball", "football-ai"],
+  "repo_url": "https://github.com/yuykim/gfootball-RLfootball-Imitation_Learning"
+}

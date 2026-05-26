@@ -1,0 +1,27 @@
+---
+interface ImageItem {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+interface Props {
+  images?: ImageItem[];
+}
+
+const { images = [] } = Astro.props;
+---
+
+{images.length > 0 && (
+  <section class="image-gallery">
+    <h2>Gallery</h2>
+    <div class="image-gallery__grid">
+      {images.map((image) => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          <figcaption>{image.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+)}

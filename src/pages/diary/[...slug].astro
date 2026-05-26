@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DiaryLayout from "../../layouts/DiaryLayout.astro";
+import { getDiaryUrl, isPublicDevlog, sortByDateDesc } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("devlog")).filter(isPublicDevlog);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const entries = sortByDateDesc((await getCollection("devlog")).filter(isPublicDevlog));
+const index = entries.findIndex((item) => item.id === entry.id);
+const newer = index > 0 ? entries[index - 1] : undefined;
+const older = index >= 0 && index < entries.length - 1 ? entries[index + 1] : undefined;
+---
+
+<BaseLayout title={entry.data.title}>
+  <DiaryLayout entry={entry}>
+    <Content />
+  </DiaryLayout>
+
+  <nav class="post-nav" aria-label="Post navigation">
+    {newer ? <a href={getDiaryUrl(newer)}>← Newer save</a> : <span />}
+    {older ? <a href={getDiaryUrl(older)}>Older save →</a> : <span />}
+  </nav>
+</BaseLayout>

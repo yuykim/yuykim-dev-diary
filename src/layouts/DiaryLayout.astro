@@ -1,0 +1,37 @@
+---
+import type { DevlogEntry } from "../lib/site";
+import { formatDate, getProjectUrl } from "../lib/site";
+import MoodBadge from "../components/MoodBadge.astro";
+import TagList from "../components/TagList.astro";
+
+interface Props {
+  entry: DevlogEntry;
+}
+
+const { entry } = Astro.props;
+const commitUrl = entry.data.source_repo && entry.data.source_commit
+  ? `https://github.com/${entry.data.source_repo}/commit/${entry.data.source_commit}`
+  : undefined;
+---
+
+<article class="diary-detail">
+  <header class="save-slot">
+    <span>SAVE SLOT {formatDate(entry.data.date)}</span>
+    <h1>{entry.data.title}</h1>
+    <div class="save-slot__meta">
+      <a href={getProjectUrl(entry.data.project_slug)}>PROJECT: {entry.data.project}</a>
+      <MoodBadge mood={entry.data.mood} type={entry.data.type} />
+      <span>STATUS: {entry.data.visibility.toUpperCase()}</span>
+    </div>
+    <TagList tags={entry.data.tags} />
+  </header>
+
+  <div class="markdown-body">
+    <slot />
+  </div>
+
+  <footer class="source-panel">
+    {entry.data.source_repo && <a href={`https://github.com/${entry.data.source_repo}`}>Source repo</a>}
+    {commitUrl && <a href={commitUrl}>Source commit</a>}
+  </footer>
+</article>

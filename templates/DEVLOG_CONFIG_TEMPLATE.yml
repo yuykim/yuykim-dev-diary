@@ -1,0 +1,41 @@
+enabled: true
+
+project:
+  name: "gfootball-RLfootball-Imitation_Learning"
+  slug: "gfootball-rlfootball-imitation-learning"
+  description: "Google Research Football 환경에서 reinforcement learning과 imitation learning을 실험한 프로젝트"
+  category: "AI"
+  tags:
+    - reinforcement-learning
+    - imitation-learning
+    - gfootball
+    - football-ai
+  repo_url: "https://github.com/yuykim/gfootball-RLfootball-Imitation_Learning"
+  intro:
+    title: "gfootball-RLfootball-Imitation_Learning 프로젝트 소개"
+    summary: "이미 개발이 끝난 리포지토리일 수 있으므로, 처음 연결할 때 이 repo가 어떤 목표와 맥락을 가진 프로젝트인지 설명하는 소개 글을 생성한다."
+    publish_on_first_import: true
+
+diary:
+  path: "dev_diary"
+  assets_path: "dev_diary/assets"
+
+history:
+  path: "HISTORY.md"
+
+publish:
+  mode: "auto"
+  target_blog_repo: "yuykim/yuykim-dev-diary"
+  branch: "main"
+
+privacy:
+  default_visibility: "public"
+  exclude_patterns:
+    - ".env"
+    - "secrets/"
+    - "*.key"
+    - "*.pem"
+    - "private/"
+    - "credentials/"
+    - "*.db"
+    - "*.sqlite"

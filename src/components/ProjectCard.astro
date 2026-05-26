@@ -1,0 +1,27 @@
+---
+import type { ProjectEntry } from "../lib/site";
+import { formatDate, getProjectUrl } from "../lib/site";
+import TagList from "./TagList.astro";
+
+interface Props {
+  project: ProjectEntry;
+  count: number;
+  lastUpdated?: Date;
+}
+
+const { project, count, lastUpdated } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-card__top">
+    <span class="project-card__category">{project.data.category ?? "Project"}</span>
+    <span>{count} logs</span>
+  </div>
+  <h2><a href={getProjectUrl(project.data.slug)}>{project.data.name}</a></h2>
+  {project.data.description && <p>{project.data.description}</p>}
+  <TagList tags={project.data.tags} />
+  <div class="project-card__footer">
+    {lastUpdated && <span>Last save: {formatDate(lastUpdated)}</span>}
+    {project.data.repo_url && <a href={project.data.repo_url}>GitHub</a>}
+  </div>
+</article>

@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import PixelFrame from "../../components/PixelFrame.astro";
+import { isPublicDevlog, sortByDateDesc } from "../../lib/site";
+
+const projects = await getCollection("projects");
+const entries = sortByDateDesc((await getCollection("devlog")).filter(isPublicDevlog));
+
+function entriesForProject(slug: string) {
+  return entries.filter((entry) => entry.data.project_slug === slug);
+}
+---
+
+<BaseLayout title="Projects">
+  <section class="page-heading">
+    <p class="eyebrow">PROJECT SELECT</p>
+    <h1>Projects</h1>
+  </section>
+
+  <PixelFrame class="project-grid">
+    {projects.map((project) => {
+      const projectEntries = entriesForProject(project.data.slug);
+      return (
+        <ProjectCard
+          project={project}
+          count={projectEntries.length}
+          lastUpdated={projectEntries[0]?.data.date}
+        />
+      );
+    })}
+  </PixelFrame>
+</BaseLayout>

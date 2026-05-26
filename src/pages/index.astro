@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PixelFrame from "../components/PixelFrame.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+import TimelineGroup from "../components/TimelineGroup.astro";
+import { groupEntriesByDate, isPublicDevlog, siteDescription, sortByDateDesc } from "../lib/site";
+
+const entries = sortByDateDesc((await getCollection("devlog")).filter(isPublicDevlog));
+const groups = groupEntriesByDate(entries);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow">RETRO DEV SAVE FILE</p>
+      <h1>yuykim14 Dev Diary</h1>
+      <p>{siteDescription}</p>
+    </div>
+    <ProfileCard />
+  </section>
+
+  <PixelFrame class="timeline">
+    {groups.length > 0 ? (
+      groups.map((group) => <TimelineGroup date={group.date} entries={group.entries} />)
+    ) : (
+      <p class="empty-state">No logs yet.</p>
+    )}
+  </PixelFrame>
+</BaseLayout>

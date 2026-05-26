@@ -1,0 +1,13 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+
+const { as = "section", class: className = "" } = Astro.props;
+const Tag = as;
+---
+
+<Tag class:list={["pixel-frame", className]}>
+  <slot />
+</Tag>

@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DiaryCard from "../../components/DiaryCard.astro";
+import PixelFrame from "../../components/PixelFrame.astro";
+import { isPublicDevlog, sortByDateDesc } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const entries = sortByDateDesc((await getCollection("devlog")).filter(isPublicDevlog));
+  const tags = new Set(entries.flatMap((entry) => entry.data.tags));
+
+  return [...tags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      entries: entries.filter((entry) => entry.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, entries } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`}>
+  <section class="page-heading">
+    <p class="eyebrow">TAG FILTER</p>
+    <h1>#{tag}</h1>
+  </section>
+
+  <PixelFrame>
+    <div class="card-stack">
+      {entries.map((entry) => <DiaryCard entry={entry} />)}
+    </div>
+  </PixelFrame>
+</BaseLayout>

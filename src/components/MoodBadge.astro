@@ -1,0 +1,11 @@
+---
+interface Props {
+  mood?: string;
+  type?: "diary" | "project_intro";
+}
+
+const { mood, type = "diary" } = Astro.props;
+const label = type === "project_intro" ? "PROJECT INTRO" : mood;
+---
+
+{label && <span class:list={["mood-badge", type === "project_intro" && "intro"]}>{label}</span>}

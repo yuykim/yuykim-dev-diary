@@ -1,0 +1,15 @@
+---
+import { siteDescription, sitePath, siteTitle } from "../lib/site";
+---
+
+<header class="game-header">
+  <a class="brand" href={sitePath("/")}>
+    <img class="brand-avatar" src={sitePath("/images/profile/profile_img3.jpg")} alt="" />
+    <span>{siteTitle}</span>
+  </a>
+  <p>{siteDescription}</p>
+  <nav aria-label="Primary navigation">
+    <a href={sitePath("/")}>Timeline</a>
+    <a href={sitePath("/projects/")}>Projects</a>
+  </nav>
+</header>
