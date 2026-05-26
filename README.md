@@ -17,6 +17,62 @@ npm run dev
 npm run build
 ```
 
+## 로컬에서 디자인 수정
+
+디자인을 수정할 때는 dev 서버를 켜고 브라우저에서 바로 확인한다.
+
+```bash
+npm run dev
+```
+
+기본 확인 주소:
+
+```txt
+http://localhost:4321/yuykim-dev-diary/
+```
+
+주로 수정하는 파일:
+
+```txt
+src/styles/global.css
+```
+
+색상, 글자 크기, 여백, 카드 크기, 배경, 프로필 카드 디자인은 대부분 이 파일에서 조정한다.
+
+페이지 구조를 바꾸고 싶을 때:
+
+```txt
+src/pages/index.astro
+src/pages/projects/index.astro
+src/pages/projects/[slug].astro
+src/pages/diary/[...slug].astro
+```
+
+컴포넌트 단위로 바꾸고 싶을 때:
+
+```txt
+src/components/GameHeader.astro
+src/components/ProfileCard.astro
+src/components/DiaryCard.astro
+src/components/ProjectCard.astro
+src/components/TimelineGroup.astro
+```
+
+수정 후 배포 전에 빌드를 확인한다.
+
+```bash
+npm run build
+```
+
+문제가 없으면 commit 후 push한다.
+
+```bash
+git status
+git add src/styles/global.css src/components src/pages
+git commit -m "style: update site design"
+git push
+```
+
 ## Source Repo 연결
 
 개발 repo를 이 블로그에 연결하려면 아래 순서대로 설정한다.
