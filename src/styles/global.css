@@ -31,7 +31,8 @@ body {
   min-height: 100%;
   color: var(--text-main);
   font-family: Pretendard, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.6;
   background:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
@@ -89,21 +90,21 @@ p {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.15rem, 8vw, 5.4rem);
-  line-height: 0.95;
+  font-size: clamp(1.8rem, 5vw, 3.25rem);
+  line-height: 1.05;
   color: var(--text-main);
   text-shadow: 0 0 22px rgba(0, 217, 255, 0.38);
 }
 
 h2 {
   margin: 0 0 1rem;
-  font-size: clamp(1.45rem, 4vw, 2.1rem);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
 }
 
 h3 {
   margin: 0.35rem 0 0.6rem;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  line-height: 1.1;
+  font-size: clamp(1.02rem, 2.4vw, 1.28rem);
+  line-height: 1.18;
 }
 
 code,
@@ -121,9 +122,9 @@ pre {
 }
 
 .site-shell {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1040px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 1rem 0 4rem;
+  padding: 0.75rem 0 3rem;
 }
 
 .game-header {
@@ -140,12 +141,12 @@ pre {
   align-items: center;
   width: fit-content;
   color: var(--text-main);
-  font-size: 1.3rem;
+  font-size: 1.05rem;
 }
 
 .brand-avatar {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2rem;
+  height: 2rem;
   border: 1px solid var(--neon-green);
   border-radius: 7px;
   object-fit: cover;
@@ -157,7 +158,7 @@ pre {
   margin: 0;
   color: var(--text-muted);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
 .game-header nav {
@@ -173,7 +174,7 @@ pre {
   align-items: center;
   justify-content: center;
   min-height: 2.35rem;
-  padding: 0.55rem 0.85rem;
+  padding: 0.45rem 0.7rem;
   border: 1px solid var(--neon-blue);
   border-radius: 6px;
   color: var(--text-main);
@@ -192,13 +193,13 @@ pre {
 .hero,
 .page-heading,
 .project-stage {
-  padding: clamp(2.5rem, 8vw, 6rem) 0 2.5rem;
+  padding: clamp(1.6rem, 5vw, 3.4rem) 0 1.8rem;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
-  gap: clamp(1.2rem, 5vw, 3rem);
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 18rem);
+  gap: clamp(1rem, 4vw, 2rem);
   align-items: center;
 }
 
@@ -207,18 +208,18 @@ pre {
 .project-stage p {
   max-width: 760px;
   color: var(--text-muted);
-  font-size: 1.08rem;
+  font-size: 0.96rem;
 }
 
 .eyebrow {
   margin: 0 0 0.8rem;
   color: var(--neon-green);
-  font-size: 0.95rem;
+  font-size: 0.82rem;
 }
 
 .profile-card {
   position: relative;
-  padding: 0.75rem;
+  padding: 0.6rem;
   border: 2px solid var(--neon-magenta);
   border-radius: 8px;
   background:
@@ -238,7 +239,7 @@ pre {
   background: var(--bg-main);
   content: "P1";
   font-family: "Pixelify Sans", ui-monospace, monospace;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .profile-card__screen {
@@ -264,33 +265,33 @@ pre {
 }
 
 .profile-card__info {
-  padding: 0.85rem 0.2rem 0.1rem;
+  padding: 0.65rem 0.15rem 0.1rem;
 }
 
 .profile-card__info span {
   color: var(--neon-green);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
 }
 
 .profile-card__info strong {
   display: block;
   color: var(--text-main);
   font-family: "Pixelify Sans", ui-monospace, monospace;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   line-height: 1.1;
 }
 
 .profile-card__info p {
   margin: 0.45rem 0 0;
   color: var(--text-muted);
-  font-size: 0.86rem;
+  font-size: 0.75rem;
   line-height: 1.45;
 }
 
 .pixel-frame {
   width: 100%;
-  padding: clamp(1rem, 3vw, 1.4rem);
+  padding: clamp(0.8rem, 2.4vw, 1.1rem);
   border: 2px solid var(--border);
   border-radius: 8px;
   background: rgba(11, 16, 38, 0.86);
@@ -298,8 +299,8 @@ pre {
 }
 
 .timeline-group + .timeline-group {
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
   border-top: 1px dashed rgba(0, 217, 255, 0.35);
 }
 
@@ -315,7 +316,7 @@ pre {
 .timeline-group h2 small {
   color: var(--neon-green);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .timeline-group__entries,
@@ -333,7 +334,7 @@ pre {
 }
 
 .diary-card {
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 .diary-card:hover,
@@ -359,14 +360,14 @@ pre {
   justify-content: space-between;
   color: var(--text-muted);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.85rem;
+  font-size: 0.74rem;
 }
 
 .diary-card__body {
   display: grid;
-  grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr);
-  gap: 1rem;
-  margin-top: 0.8rem;
+  grid-template-columns: minmax(7.5rem, 11rem) minmax(0, 1fr);
+  gap: 0.8rem;
+  margin-top: 0.65rem;
 }
 
 .diary-card__thumb {
@@ -383,7 +384,7 @@ pre {
   place-items: center;
   color: rgba(57, 255, 20, 0.72);
   font-family: "Pixelify Sans", ui-monospace, monospace;
-  font-size: 2rem;
+  font-size: 1.45rem;
   background:
     linear-gradient(135deg, rgba(255, 43, 214, 0.12), transparent 45%),
     linear-gradient(45deg, rgba(0, 217, 255, 0.12), transparent 50%),
@@ -394,7 +395,7 @@ pre {
 .project-card__category {
   color: var(--neon-green);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.9rem;
+  font-size: 0.76rem;
 }
 
 .diary-card p,
@@ -407,13 +408,13 @@ pre {
   display: inline-flex;
   align-items: center;
   min-height: 1.75rem;
-  padding: 0.2rem 0.55rem;
+  padding: 0.15rem 0.45rem;
   border: 1px solid rgba(255, 242, 0, 0.55);
   border-radius: 999px;
   color: var(--neon-yellow);
   background: rgba(255, 242, 0, 0.08);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
 }
 
 .mood-badge.intro {
@@ -438,7 +439,7 @@ pre {
   border-radius: 999px;
   background: rgba(0, 217, 255, 0.06);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
 }
 
 .project-grid {
@@ -448,14 +449,14 @@ pre {
 }
 
 .project-card {
-  padding: 1rem;
+  padding: 0.85rem;
 }
 
 .project-card__footer {
   justify-content: space-between;
   color: var(--text-muted);
   font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.85rem;
+  font-size: 0.74rem;
 }
 
 .save-slot {
@@ -470,7 +471,7 @@ pre {
 
 .save-slot h1 {
   margin: 0.7rem 0 1rem;
-  font-size: clamp(2rem, 7vw, 4rem);
+  font-size: clamp(1.55rem, 4.5vw, 2.6rem);
 }
 
 .markdown-body {
