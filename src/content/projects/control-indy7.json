@@ -1,0 +1,13 @@
+{
+  "name": "Control Indy7",
+  "slug": "control-indy7",
+  "description": "Keyboard teleoperation system for controlling a Neuromeka Indy7 robot arm with Python and Pygame.",
+  "category": "Robotics",
+  "tags": [
+    "robotics",
+    "indy7",
+    "teleoperation",
+    "python"
+  ],
+  "repo_url": "https://github.com/yuykim/control_indy7"
+}
