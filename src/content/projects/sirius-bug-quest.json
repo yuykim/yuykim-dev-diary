@@ -1,0 +1,13 @@
+{
+  "name": "Sirius Bug Quest",
+  "slug": "sirius-bug-quest",
+  "description": "Unity game project from the Sirius game development workflow, focused on Bug Quest gameplay and iteration.",
+  "category": "Unity Game",
+  "tags": [
+    "unity",
+    "game",
+    "sirius",
+    "csharp"
+  ],
+  "repo_url": "https://github.com/yuykim/Sirius-Bug-Quest"
+}
