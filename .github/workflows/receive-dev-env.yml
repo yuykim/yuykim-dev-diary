@@ -1,0 +1,49 @@
+name: Receive Dev Environment
+
+on:
+  repository_dispatch:
+    types:
+      - dev_env_updated
+
+jobs:
+  receive:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout blog repository
+        uses: actions/checkout@v4
+
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.client_payload.source_repo }}
+          ref: ${{ github.event.client_payload.source_sha }}
+          path: source-repo
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Import dev environment
+        run: |
+          node scripts/import-dev-env.js \
+            --source ./source-repo \
+            --repo "${{ github.event.client_payload.source_repo }}" \
+            --sha "${{ github.event.client_payload.source_sha }}"
+
+      - name: Commit imported content
+        run: |
+          git config user.name "dev-env-bot"
+          git config user.email "dev-env-bot@users.noreply.github.com"
+          git add src/content/dev_env
+          git diff --staged --quiet && echo "No changes" || git commit -m "docs: import dev environment from ${{ github.event.client_payload.source_repo }}"
+          git push

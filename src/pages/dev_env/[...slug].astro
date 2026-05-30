@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PixelFrame from "../../components/PixelFrame.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("dev_env")).filter((entry) => entry.id !== "index");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={entry.data.title ?? "Dev Env"}>
+  <section class="page-heading">
+    <p class="eyebrow">MACHINE PROFILE</p>
+    <h1>{entry.data.title ?? "Dev Env"}</h1>
+  </section>
+
+  <PixelFrame>
+    <article class="markdown-body">
+      <Content />
+    </article>
+  </PixelFrame>
+</BaseLayout>

@@ -32,7 +32,16 @@ const projects = defineCollection({
   }),
 });
 
+const devEnv = defineCollection({
+  loader: glob({ base: "./src/content/dev_env", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string().optional(),
+    updated: z.coerce.date().optional(),
+  }),
+});
+
 export const collections = {
   devlog,
   projects,
+  dev_env: devEnv,
 };

@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PixelFrame from "../components/PixelFrame.astro";
+
+const entries = await getCollection("dev_env");
+const entry = entries.find((item) => item.id === "index");
+
+if (!entry) {
+  throw new Error("Missing dev_env/index.md");
+}
+
+const { Content } = await render(entry);
+---
+
+<BaseLayout title="Dev Env">
+  <section class="page-heading">
+    <p class="eyebrow">SETUP PROFILE</p>
+    <h1>Dev Env</h1>
+  </section>
+
+  <PixelFrame>
+    <article class="markdown-body">
+      <Content />
+    </article>
+  </PixelFrame>
+</BaseLayout>
