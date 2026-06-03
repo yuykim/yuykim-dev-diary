@@ -1,0 +1,14 @@
+{
+  "name": "capstone-yuykim-pipet-physical-ai",
+  "slug": "capstone-yuykim-pipet-physical-ai",
+  "description": "HGU 캡스톤 프로젝트 - Physical AI, Pipet 로봇 제어 및 데이터 파이프라인",
+  "category": "AI",
+  "tags": [
+    "physical-ai",
+    "robotics",
+    "lerobot",
+    "capstone",
+    "hgu"
+  ],
+  "repo_url": "https://github.com/yuykim/capstone-yuykim-pipet-physical-ai"
+}
