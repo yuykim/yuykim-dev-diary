@@ -8,13 +8,12 @@ const DEFAULT_BASE_PATH = "/yuykim-dev-diary";
 const BLOG_BASE_PATH = normalizeBasePath(process.env.DEVLOG_BASE_PATH ?? DEFAULT_BASE_PATH);
 
 const SECRET_PATTERNS = [
-  /OPENAI_API_KEY/i,
-  /GITHUB_TOKEN/i,
-  /password\s*=/i,
-  /secret\s*=/i,
-  /api_key\s*=/i,
+  /\b(?:OPENAI_API_KEY|GITHUB_TOKEN)\b\s*[:=]\s*\S+/i,
+  /\b(?:password|secret|api_key|access_token)\b\s*[:=]\s*\S+/i,
+  /\bgh[pousr]_[A-Za-z0-9_]{20,}\b/,
+  /\bgithub_pat_[A-Za-z0-9_]{20,}\b/i,
+  /\bsk-[A-Za-z0-9]{20,}\b/,
   /BEGIN PRIVATE KEY/i,
-  /access_token/i,
 ];
 
 const BLOCKED_ASSET_PATTERNS = [
